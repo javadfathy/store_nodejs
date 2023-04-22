@@ -1,0 +1,4 @@
+# ignore all log
+*.log
+
+/node_modules

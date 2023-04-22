@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    color: rgb(54, 54, 54);
+}
+
+/* Header style */
+header {
+    background-color: rgb(169, 169, 247);
+    width: 100%;
+    height: 100px;
+}
+header ul {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+header ul li {
+    list-style-type: none;
+    margin: 10px 20px;
+}
+header ul li a {
+    color: rgb(54, 54, 54);
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bold;
+    transition: .2s ease;
+}
+header ul li a:hover {
+    color: rgb(87, 87, 87);
+}
+
+/* Default Section Style */
+section {
+    width: 90%;
+    margin: auto;
+    background-color: rgb(172, 170, 170);
+    padding: 20px 10px;
+    margin-top: 30px;
+    border-radius: 5px;
+}
+section h1 {
+    font-weight: bold;
+    padding-bottom: 10px;
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
+}
+
+/* add-product */
+.add-product input {
+    border: none;
+    padding: 10px 5px;
+    outline: none;
+    border-radius: 5px;
+}
+.add-product button {
+    padding: 10px 15px;
+    border: none;
+    outline: none;
+    background-color: rgb(121, 121, 228);
+    color: white;
+    border-radius: 5px;
+}
+
