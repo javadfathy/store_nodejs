@@ -1,8 +1,15 @@
 const products = []
 
 module.exports = class Product {
-    constructor(title) {
+    constructor(title, description, price, attribute, brand, thumbnail, category, comments) {
         this.title = title
+        this.description = description
+        this.price = price
+        this.attribute = attribute
+        this.brand = brand
+        this.thumbnail = thumbnail
+        this.category = category
+        this.comments = comments
     }
 
     saveProduct() {

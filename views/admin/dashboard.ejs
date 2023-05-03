@@ -1,0 +1,41 @@
+<%- include('../includes/header.ejs') %>
+    <section>
+        <h1>Dashboard</h1>
+        <ul>
+            <li>
+                <a href="/admin/add-product">add product</a>
+            </li>
+            <li>
+                <a href="/admin/add-post">add post</a>
+            </li>
+        </ul>
+        <div class="list">
+            <div class="products">
+                <h3>Products</h3>
+                <% if (products.length > 0) { %>
+                    <ul>
+                    <% for (product of products) { %>
+                        <li>
+                           name: <b><%= product.title %></b>|
+                           price: <b><%= product.price %></b><span class="action edit">edit</span><span class="action remove">remove</span></li>
+                    <% } %>
+                </ul>
+                <% } else { %>
+                    <p>not found product</p>
+                <% } %>
+            </div>
+            <div class="posts">
+                <h3>Blogs</h3>
+                <% if (posts.length > 0) { %>
+                    <ul>
+                    <% for (post of posts) { %>
+                        <li>post name: <b><%= post.title %></b><span class="action edit">edit</span><span class="action remove">remove</span></li>
+                    <% } %>
+                    </ul>
+                <% } else { %>
+                    <p>not found post</p>
+                <% } %>
+            </div>
+        </div>
+    </section>
+<%- include('../includes/footer.ejs') %>

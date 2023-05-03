@@ -1,6 +1,7 @@
-<%- include('includes/header.ejs') %>
+<%- include('../../includes/header.ejs') %>
     <section>
-        <h1>Products list</h1>
+        <%= products %>
+        <h1>Shop</h1>
         <% if (products.length > 0) { %>
             <% for (product of products) { %>
                 <p>product name: <b><%= product.title %></b></p>
@@ -9,4 +10,4 @@
             <p>not found product</p>
         <% } %>
     </section>
-<%- include('includes/footer.ejs') %>
+<%- include('../../includes/footer.ejs') %>

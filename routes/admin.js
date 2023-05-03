@@ -1,15 +1,24 @@
 const path = require('path')
 const express = require('express')
 
-const productControllers = require('../controllers/products')
+const adminControllers = require('../controllers/admin')
 
 const router = express.Router()
 
 
 
-router.get('/add-product', productControllers.addProductPage)
+router.get('/dashboard', adminControllers.dashboard)
 
-router.post('/add-product', productControllers.addProduct)
+// product
+router.get('/list-product', adminControllers.getProducts)
+router.get('/add-product', adminControllers.addProductPage)
+
+router.post('/add-product', adminControllers.addProduct)
+
+// blog
+router.get('/add-post', adminControllers.addPostPage)
+
+router.post('/add-post', adminControllers.addPost)
 
 // module.exports = router
 

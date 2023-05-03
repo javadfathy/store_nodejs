@@ -1,0 +1,12 @@
+<%- include('../../includes/header.ejs') %>
+    <section>
+        <h1>Blog</h1>
+        <% if (posts.length > 0) { %>
+            <% for (post of posts) { %>
+                <p>post title: <b><%= post.title %></b></p>
+            <% } %>
+        <% } else { %>
+            <p>not found product</p>
+        <% } %>
+    </section>
+<%- include('../../includes/footer.ejs') %>

@@ -1,10 +1,12 @@
 const path = require('path')
 const express = require('express')
 
-const shopControllers = require('../controllers/shop')
+const blogControllers = require('../controllers/blog')
 
 const router = express.Router()
 
-router.get('/shop', shopControllers.getProducts)
+// home page
+router.get('/blog', blogControllers.getBlogs)
+
 
 module.exports = router
