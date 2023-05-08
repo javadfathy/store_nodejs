@@ -4,7 +4,7 @@
         <h1>Shop</h1>
         <% if (products.length > 0) { %>
             <% for (product of products) { %>
-                <p>product name: <b><%= product.title %></b></p>
+                <p>product name: <b><a href="/shop/product/<%= product.title %>"><%= product.title %></a></b></p>
             <% } %>
         <% } else { %>
             <p>not found product</p>

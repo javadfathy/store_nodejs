@@ -10,3 +10,14 @@ module.exports.getProducts = (req, res) => {
         products
     })
 }
+
+module.exports.getProduct = (req, res) => {
+    const pTitle = req.params.title
+    
+    const product = Product.getProduct(pTitle)
+    console.log('getProduct: ', product)
+    res.render('front/shop/product', {
+        pageTitle: pTitle,
+        product
+    })
+}

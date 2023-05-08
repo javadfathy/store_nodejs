@@ -19,4 +19,9 @@ module.exports = class Product {
     static getProducts() {
         return products
     }
+
+    static getProduct(title) {
+        const product = products.find(x => x.title === title)
+        return product
+    }
 }
