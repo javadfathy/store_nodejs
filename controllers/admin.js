@@ -3,20 +3,25 @@ const Blog = require('../models/single-blog')
 
 
 module.exports.dashboard = (req, res) => {
-    const products = Product.getProducts()
-    const posts = Blog.getPosts() 
-    res.render('admin/dashboard', {
-        pageTitle: 'Add product',
-        products,
-        posts
+    
+    Product.getProducts((products) => {
+        Blog.getPosts((posts) => {
+            res.render('admin/dashboard', {
+                pageTitle: 'Add product',
+                products,
+                posts
+            })
+        })        
     })
+    
 }
 
 module.exports.getProducts = (req, res) => {
-    const products = Product.getProducts()
-    res.render('admin/shop/list-product', {
-        pageTitle: 'Products List',
-        products
+    Product.getProducts((products) => {
+        res.render('admin/shop/list-product', {
+            pageTitle: 'Products List',
+            products
+        })
     })
 }
 
