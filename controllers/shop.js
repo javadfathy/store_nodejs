@@ -23,3 +23,15 @@ module.exports.getProduct = (req, res) => {
         })
     })
 }
+
+module.exports.getCart = (req, res) => {
+    res.render('front/shop/cart', {
+        pageTitle: 'Cart'
+    })
+}
+
+module.exports.addCart = (req, res) => {
+    const pID = req.body.productId
+    console.log(pID)
+    res.redirect('/shop')
+}

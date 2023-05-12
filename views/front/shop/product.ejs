@@ -1,5 +1,6 @@
 <%- include('../../includes/header.ejs') %>
     <section>
        <%= product.title %>
+       <%- include('../../includes/add-to-cart.ejs',{productId: product.id}) %>
     </section>
 <%- include('../../includes/footer.ejs') %>

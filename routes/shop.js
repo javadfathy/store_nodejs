@@ -9,4 +9,8 @@ router.get('/shop', shopControllers.getProducts)
 
 router.get('/shop/product/:title', shopControllers.getProduct)
 
+router.get('/cart', shopControllers.getCart)
+
+router.post('/cart', shopControllers.addCart)
+
 module.exports = router
