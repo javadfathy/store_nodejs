@@ -47,6 +47,13 @@ module.exports.addProduct = (req, res) => {
 }
 
 
+module.exports.deleteProduct = (req, res) => {
+    const pID = req.body.productId
+
+    Product.deleteProduct(pID)
+    res.redirect('/admin/list-product')
+}
+
 module.exports.addPostPage = (req, res) => {
     res.render('admin/blog/add-post', {
         pageTitle: 'Add product'

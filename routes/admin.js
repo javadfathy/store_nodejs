@@ -15,6 +15,8 @@ router.get('/add-product', adminControllers.addProductPage)
 
 router.post('/add-product', adminControllers.addProduct)
 
+router.post('/delete-product', adminControllers.deleteProduct)
+
 // blog
 router.get('/add-post', adminControllers.addPostPage)
 
