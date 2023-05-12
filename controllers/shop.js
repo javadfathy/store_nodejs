@@ -1,10 +1,11 @@
 const Product = require('../models/single-product')
+const Cart = require('../models/cart')
 
 module.exports.getProducts = (req, res) => {
     // console.log(adminData.products)
     // res.sendFile(path.join(__dirname,'../','views','shop.html'))
     Product.getProducts((products) => {
-        console.log(products)
+        // console.log(products)
         res.render('front/shop/products', {
             pageTitle: 'Home',
             products
@@ -33,5 +34,9 @@ module.exports.getCart = (req, res) => {
 module.exports.addCart = (req, res) => {
     const pID = req.body.productId
     console.log(pID)
+    Product.getProductWithId(pID, (product) => {
+        console.log(product)
+        Cart.addToCart(pID,product.price)
+    })
     res.redirect('/shop')
 }
