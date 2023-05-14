@@ -7,6 +7,7 @@ const shopRoute = require('./routes/shop')
 const blogRoute = require('./routes/blog')
 const adminRoutes = require('./routes/admin')
 const indexRoutes = require('./routes/index')
+const connectDB = require('./util/database').connectDB
 
 const app = express()
 
@@ -30,4 +31,6 @@ app.use((req, res) => {
 })
 
 
-app.listen(3_000)
+connectDB(() => {
+    app.listen(3_000)
+})
