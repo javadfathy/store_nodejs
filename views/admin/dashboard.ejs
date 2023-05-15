@@ -24,25 +24,14 @@
                     <% for (product of products) { %>
                         <li>
                            name: <b><%= product.title %></b>|
-                           price: <b><%= product.price %></b><span class="action edit">edit</span><span class="action remove">remove</span></li>
+                           price: <b><%= product.price %></b><span class="action edit">edit</span><span class="action remove" >remove</span></li>
                     <% } %>
                 </ul>
                 <% } else { %>
                     <p>not found product</p>
                 <% } %>
             </div>
-            <div class="posts">
-                <h3>Blogs</h3>
-                <% if (posts.length > 0) { %>
-                    <ul>
-                    <% for (post of posts) { %>
-                        <li>post name: <b><%= post.title %></b><span class="action edit">edit</span><span class="action remove">remove</span></li>
-                    <% } %>
-                    </ul>
-                <% } else { %>
-                    <p>not found post</p>
-                <% } %>
-            </div>
+            
         </div>
     </section>
 <%- include('../includes/footer.ejs') %>

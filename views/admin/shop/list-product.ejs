@@ -72,7 +72,7 @@
                             <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             <form action="/admin/delete-product" method="POST">
                                 <button class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</button>
-                                <input type="hidden" value="<%= product.id %>" name="productId"/>
+                                <input type="hidden" value="<%= product._id %>" name="productId"/>
                             </form>
                         </td>
                     </tr>
