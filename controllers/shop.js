@@ -14,17 +14,20 @@ module.exports.getProducts = (req, res) => {
         })
 }
 
-// module.exports.getProduct = (req, res) => {
-//     const pTitle = req.params.title
+module.exports.getProduct = (req, res) => {
+    const pID = req.params.id
     
-//     Product.getProduct(pTitle, (product) => {
-//         console.log('getProduct: ', product)
-//         res.render('front/shop/product', {
-//             pageTitle: pTitle,
-//             product
-//         })
-//     })
-// }
+    Product.Rproduct(pID)
+        .then(product => {
+            res.render('front/shop/product', {
+                product,
+                pageTitle: 'product.title'
+            })
+        })
+        .catch(err => {
+            console.error(err);
+        })
+}
 
 // module.exports.getCart = (req, res) => {
 //     res.render('front/shop/cart', {
