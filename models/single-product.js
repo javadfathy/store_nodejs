@@ -12,6 +12,21 @@ class Product {
         this.attribute = attribute
     }
 
+
+    // CRUD...
+    static Rproducts() {
+        const db = getDB()
+        return db.collection('products')
+            .find()
+            .toArray()
+            .then(products => {
+                return products
+            })
+            .catch(err => {
+                console.error(err)
+            })
+    }
+
     Cproduct() {
         const db = getDB()
         return db.collection('products')

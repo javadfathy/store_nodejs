@@ -1,5 +1,5 @@
 <%- include('../../includes/header.ejs') %>
-<%- include('../../includes/breadcrumb.ejs') %>
+<%- include('../../includes/breadcrumb.ejs', {breads: ['Shop']}) %>
 <div class=" flex flex-row flex-wrap gap-4">
 <% if (products.length > 0) { %>
     <% for (product of products) { %>

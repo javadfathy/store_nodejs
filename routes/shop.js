@@ -7,10 +7,10 @@ const router = express.Router()
 
 router.get('/shop', shopControllers.getProducts)
 
-router.get('/shop/product/:title', shopControllers.getProduct)
+// router.get('/shop/product/:title', shopControllers.getProduct)
 
-router.get('/cart', shopControllers.getCart)
+// router.get('/cart', shopControllers.getCart)
 
-router.post('/cart', shopControllers.addCart)
+// router.post('/cart', shopControllers.addCart)
 
 module.exports = router
