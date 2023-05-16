@@ -41,7 +41,6 @@ module.exports.addCart = (req, res) => {
             return req.user.addToCart(product)
         })
         .then(result => {
-            console.log(result);
             res.redirect('/shop')
         })
 }
