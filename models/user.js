@@ -43,6 +43,21 @@ class User {
             .insertOne(this)
     }
 
+    // Get Cart User Data
+    getCart() {
+        const db = getDB()
+        const productIds = this.cart.items.map(i => {
+            return i.productId
+        })
+        return db.collection('products')
+            .find({ _id: { $in: productIds } }).toArray()
+            .then(products => {
+                return products.map(p => {
+                    return {...p}
+                })
+            })
+    }
+
     // Add to Cart
     addToCart(product) {
         const cartProductIndex = this.cart.items.findIndex(cp => cp.productId.toString() === product._id.toString())

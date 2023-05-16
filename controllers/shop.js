@@ -29,9 +29,16 @@ module.exports.getProduct = (req, res) => {
 }
 
 module.exports.getCart = (req, res) => {
-    res.render('front/shop/cart', {
-        pageTitle: 'Cart'
-    })
+    req.user.getCart()
+        .then(products => {
+            res.render('front/shop/cart', {
+                pageTitle: "Cart Page",
+                products: products 
+            })
+        })
+        .catch(err => {
+            console.error(err);
+        })
 }
 
 module.exports.addCart = (req, res) => {
