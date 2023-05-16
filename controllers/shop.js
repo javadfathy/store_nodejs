@@ -1,5 +1,4 @@
 const Product = require('../models/single-product')
-const Cart = require('../models/cart')
 
 module.exports.getProducts = (req, res) => {
     Product.Rproducts()
@@ -29,18 +28,20 @@ module.exports.getProduct = (req, res) => {
         })
 }
 
-// module.exports.getCart = (req, res) => {
-//     res.render('front/shop/cart', {
-//         pageTitle: 'Cart'
-//     })
-// }
+module.exports.getCart = (req, res) => {
+    res.render('front/shop/cart', {
+        pageTitle: 'Cart'
+    })
+}
 
-// module.exports.addCart = (req, res) => {
-//     const pID = req.body.productId
-//     console.log(pID)
-//     Product.getProductWithId(pID, (product) => {
-//         console.log(product)
-//         Cart.addToCart(pID,product.price)
-//     })
-//     res.redirect('/shop')
-// }
+module.exports.addCart = (req, res) => {
+    const pID = req.body.productId
+    Product.Rproduct(pID)
+        .then(product => {
+            return req.user.addToCart(product)
+        })
+        .then(result => {
+            console.log(result);
+            res.redirect('/shop')
+        })
+}

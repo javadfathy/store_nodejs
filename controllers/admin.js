@@ -40,7 +40,8 @@ module.exports.addProduct = (req, res) => {
     category = req.body.category
     comments = req.body.comments
     attribute = req.body.attribute
-    const product = new Product(title, description, price, thumbnail, brand, category, comments, attribute)
+    user = req.user._id
+    const product = new Product(title, description, price, thumbnail, brand, category, comments, attribute,user)
     product.Cproduct()
         .then(result => {
             console.log('product Created!');
