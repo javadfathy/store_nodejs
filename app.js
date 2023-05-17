@@ -22,16 +22,16 @@ app.use(indexRoutes)
 
 app.use(express.static(path.join(__dirname,'public')))
 
-// app.use((req,res,next) => {
-//     User.Ruser('646348a092fb2220da359725')
-//         .then(user => {
-//             req.user = new User(user.username, user.email,user.mobile,user.password,user.cart,user._id)
-//             next()
-//         })
-//         .catch(err => {
-//             console.error(err);
-//         })
-// })
+app.use((req,res,next) => {
+    User.findById('64654217fbda88a08a2abcad')
+        .then(user => {
+            req.user = user
+            next()
+        })
+        .catch(err => {
+            console.error(err);
+        })
+})
 
 // should set req before use route else not worked... fucking.....
 
@@ -49,6 +49,21 @@ app.use((req, res) => {
 
 mongoose.connect('mongodb://127.0.0.1:27017/jwadshop',{useNewUrlParser: true})
     .then(result => {
+        User.findOne()
+            .then(user => {
+                if (!user) {
+                    const user = new User({
+                        username: "jwad",
+                        email: "jwad@gmail.com",
+                        mobile: "111111111111111111",
+                        password: "1234",
+                        cart: {
+                            items: []
+                        }
+                    })
+                    user.save()
+                }
+            })
         app.listen(3_000)
     })
     .catch(err => {
