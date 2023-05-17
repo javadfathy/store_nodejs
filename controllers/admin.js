@@ -4,7 +4,7 @@ const Blog = require('../models/single-blog')
 
 module.exports.dashboard = (req, res) => {
     
-    Product.Rproducts()
+    Product.find()
         .then(products => {
             res.render('admin/dashboard', {
                 products,
@@ -15,7 +15,7 @@ module.exports.dashboard = (req, res) => {
 }
 
 module.exports.getProducts = (req, res) => {
-    Product.Rproducts()
+    Product.find()
         .then(products => {
         res.render('admin/shop/list-product', {
             pageTitle: 'Products List',
@@ -65,13 +65,27 @@ module.exports.addProduct = (req, res) => {
 module.exports.deleteProduct = (req, res) => {
     const pID = req.body.productId
 
-    Product.Dproduct(pID)
+    Product.findByIdAndRemove(pID)
         .then(result => {
             console.log('product Deleted!');
             res.redirect('/admin/list-product')
         })
         .catch(err => {
             console.error(err);
+        })
+}
+
+
+module.exports.getPosts = (req, res) => {
+    Blog.find()
+        .then(posts => {
+            res.render('admin/blog/list-post', {
+                pageTitle: "Posts",
+                posts: posts
+            })
+        })
+        .catch(err => {
+            console.error(err)
         })
 }
 
@@ -82,8 +96,14 @@ module.exports.addPostPage = (req, res) => {
 }
 
 module.exports.addPost = (req, res) => {
-    // products.push({title: req.body.title})
-    const post = new Blog(req.body.title)
-    post.savePost()
+    const title = req.body.title
+    slug = req.body.slug
+    content = req.body.content
+    const post = new Blog({
+        title: title,
+        slug: slug,
+        content: content,
+    })
+    post.save()
     res.redirect('/admin/dashboard')
 }

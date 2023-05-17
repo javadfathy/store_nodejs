@@ -1,7 +1,7 @@
 const Product = require('../models/single-product')
 
 module.exports.getProducts = (req, res) => {
-    Product.Rproducts()
+    Product.find()
         .then(products => {
             res.render('front/shop/products', {
                 products,
@@ -16,7 +16,7 @@ module.exports.getProducts = (req, res) => {
 module.exports.getProduct = (req, res) => {
     const pID = req.params.id
     
-    Product.Rproduct(pID)
+    Product.findById(pID)
         .then(product => {
             res.render('front/shop/product', {
                 product,

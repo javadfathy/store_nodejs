@@ -12,35 +12,23 @@
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Product name
+                            Title
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Color
+                            Slug
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Category
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Accesories
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Available
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Price
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Weight
+                            Content
                         </th>
                         <th scope="col" class="px-6 py-3">
                             Action
                         </th>
                     </tr>
                 </thead>
-                    <% if (products.length > 0) { %>
+                    <% if (posts.length > 0) { %>
                 <tbody>
                     
-                        <% for (product of products) { %>
+                        <% for (post of posts) { %>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="w-4 p-4">
                             <div class="flex items-center">
@@ -49,31 +37,19 @@
                             </div>
                         </td>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <%= product.title %>
+                            <%= post.title %>
                         </th>
                         <td class="px-6 py-4">
-                            Silver
+                            <%= post.slug %>
                         </td>
                         <td class="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td class="px-6 py-4">
-                            Yes
-                        </td>
-                        <td class="px-6 py-4">
-                            Yes
-                        </td>
-                        <td class="px-6 py-4">
-                            $<%= product.price %>
-                        </td>
-                        <td class="px-6 py-4">
-                            3.0 lb.
+                            <%= post.content %>
                         </td>
                         <td class="flex items-center px-6 py-4 space-x-3">
                             <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
                             <form action="/admin/delete-product" method="POST">
                                 <button class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</button>
-                                <input type="hidden" value="<%= product._id %>" name="productId"/>
+                                <input type="hidden" value="<%= post._id %>" name="postId"/>
                             </form>
                         </td>
                     </tr>
