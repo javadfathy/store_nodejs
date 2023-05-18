@@ -8,6 +8,7 @@ const shopRoute = require('./routes/shop')
 const blogRoute = require('./routes/blog')
 const adminRoutes = require('./routes/admin')
 const indexRoutes = require('./routes/index')
+const authRoutes = require('./routes/auth')
 const User = require('./models/user')
 
 const app = express()
@@ -38,6 +39,7 @@ app.use((req,res,next) => {
 app.use('/admin',adminRoutes)
 app.use(shopRoute)
 app.use(blogRoute)
+app.use(authRoutes)
 
 
 
