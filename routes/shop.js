@@ -9,7 +9,7 @@ router.get('/shop', shopControllers.getProducts)
 
 router.get('/shop/product/:id', shopControllers.getProduct)
 
-// router.get('/cart', shopControllers.getCart)
+router.get('/cart', shopControllers.getCart)
 
 router.post('/cart', shopControllers.addCart)
 
