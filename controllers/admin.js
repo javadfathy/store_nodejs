@@ -40,7 +40,7 @@ module.exports.addProduct = (req, res) => {
     category = req.body.category
     comments = req.body.comments
     attribute = req.body.attribute
-    // user = req.user._id
+    user = req.user
     const product = new Product({
         title: title,
         description: description,
@@ -50,6 +50,7 @@ module.exports.addProduct = (req, res) => {
         category: category,
         comments: comments,
         attribute: attribute,
+        userId: user
     })
     product.save()
         .then(result => {

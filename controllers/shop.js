@@ -43,7 +43,7 @@ module.exports.getCart = (req, res) => {
 
 module.exports.addCart = (req, res) => {
     const pID = req.body.productId
-    Product.Rproduct(pID)
+    Product.findById(pID)
         .then(product => {
             return req.user.addToCart(product)
         })

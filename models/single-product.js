@@ -10,6 +10,11 @@ const productSchema = new Schema({
     brand: String,
     comments: Boolean,
     attribute: String,
+    userId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Usesr',
+        required: true
+    }
 })
 
 
