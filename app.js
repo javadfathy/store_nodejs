@@ -3,6 +3,8 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
+const session = require('express-session')
+const MongoDBStore = require('connect-mongodb-session')(session)
 // REQURE PROJECT
 const shopRoute = require('./routes/shop')
 const blogRoute = require('./routes/blog')
@@ -13,18 +15,33 @@ const User = require('./models/user')
 
 const app = express()
 
+const store = new MongoDBStore({
+    uri: 'mongodb://127.0.0.1:27017/jwadshop',
+    collection: 'session'
+})
+
 // APP SET
 app.set('view engine', 'ejs')
 app.set('views','views')
 
 // APP USE
 app.use(bodyParser.urlencoded({extended: false}))
-app.use(indexRoutes)
 
 app.use(express.static(path.join(__dirname,'public')))
+app.use(
+    session({
+        secret: 'secret key',
+        resave: false,
+        saveUninitialized: false,
+        store: store
+    })
+)
 
 app.use((req,res,next) => {
-    User.findById('64654217fbda88a08a2abcad')
+    if (!req.session.user) {
+        return next()
+    }
+    User.findById(req.session.user._id)
         .then(user => {
             req.user = user
             next()
@@ -36,6 +53,7 @@ app.use((req,res,next) => {
 
 // should set req before use route else not worked... fucking.....
 
+app.use(indexRoutes)
 app.use('/admin',adminRoutes)
 app.use(shopRoute)
 app.use(blogRoute)

@@ -5,7 +5,8 @@ module.exports.getProducts = (req, res) => {
         .then(products => {
             res.render('front/shop/products', {
                 products,
-                pageTitle: 'محصولات'
+                pageTitle: 'محصولات',
+                isAuth: req.session.isLoggedIn
             })
         })
         .catch(err => {
@@ -20,7 +21,8 @@ module.exports.getProduct = (req, res) => {
         .then(product => {
             res.render('front/shop/product', {
                 product,
-                pageTitle: 'product.title'
+                pageTitle: 'product.title',
+                isAuth: req.session.isLoggedIn
             })
         })
         .catch(err => {
@@ -34,7 +36,8 @@ module.exports.getCart = (req, res) => {
             const products = user.cart.items
             res.render('front/shop/cart', {
                 pageTitle: "Cart Page",
-                products: products 
+                products: products,
+                isAuth: req.session.isLoggedIn
             })
         })
         .catch(err => {

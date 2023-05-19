@@ -8,7 +8,8 @@ module.exports.dashboard = (req, res) => {
         .then(products => {
             res.render('admin/dashboard', {
                 products,
-                pageTitle: 'products list'
+                pageTitle: 'products list',
+                isAuth: req.session.isLoggedIn
             })
         })
     
@@ -19,14 +20,16 @@ module.exports.getProducts = (req, res) => {
         .then(products => {
         res.render('admin/shop/list-product', {
             pageTitle: 'Products List',
-            products
+            products,
+            isAuth: req.session.isLoggedIn
         })
     })
 }
 
 module.exports.addProductPage = (req, res) => {
     res.render('admin/shop/add-product', {
-        pageTitle: 'Add product'
+        pageTitle: 'Add product',
+        isAuth: req.session.isLoggedIn
     })
 }
 
@@ -82,7 +85,8 @@ module.exports.getPosts = (req, res) => {
         .then(posts => {
             res.render('admin/blog/list-post', {
                 pageTitle: "Posts",
-                posts: posts
+                posts: posts,
+                isAuth: req.session.isLoggedIn
             })
         })
         .catch(err => {
@@ -92,7 +96,8 @@ module.exports.getPosts = (req, res) => {
 
 module.exports.addPostPage = (req, res) => {
     res.render('admin/blog/add-post', {
-        pageTitle: 'Add product'
+        pageTitle: 'Add product',
+        isAuth: req.session.isLoggedIn
     })
 }
 

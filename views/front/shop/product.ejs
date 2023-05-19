@@ -1,6 +1,6 @@
 <%- include('../../includes/header.ejs') %>
     <section>
        <%= product.title %>
-       <%- include('../../includes/add-to-cart.ejs',{productId: product._id}) %>
+       <%- include('../../includes/add-to-cart.ejs',{productId: product._id, isAuth: isAuth}) %>
     </section>
 <%- include('../../includes/footer.ejs') %>

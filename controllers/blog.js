@@ -5,7 +5,8 @@ module.exports.getBlogs = (req, res) => {
     .then(posts => {
         res.render('front/blog/blog', {
             pageTitle: 'Blog',
-            posts
+            posts,
+            isAuth: req.session.isLoggedIn || false
         })
     })
     .catch(err => {
@@ -19,7 +20,8 @@ module.exports.getBlog = (req, res) => {
         .then(post => {
             res.render('front/blog/single', {
                 pageTitle: post.title,
-                post
+                post,
+                isAuth: req.session.isLoggedIn || false
             })
         })
         .catch(err => {
