@@ -69,21 +69,6 @@ app.use((req, res) => {
 
 mongoose.connect('mongodb://127.0.0.1:27017/jwadshop',{useNewUrlParser: true})
     .then(result => {
-        User.findOne()
-            .then(user => {
-                if (!user) {
-                    const user = new User({
-                        username: "jwad",
-                        email: "jwad@gmail.com",
-                        mobile: "111111111111111111",
-                        password: "1234",
-                        cart: {
-                            items: []
-                        }
-                    })
-                    user.save()
-                }
-            })
         app.listen(3_000)
     })
     .catch(err => {
