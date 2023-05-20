@@ -9,7 +9,8 @@ module.exports.dashboard = (req, res) => {
             res.render('admin/dashboard', {
                 products,
                 pageTitle: 'products list',
-                isAuth: req.session.isLoggedIn
+                isAuth: req.session.isLoggedIn,
+                isAdmin: req.session.isAdmin || false
             })
         })
     
@@ -21,7 +22,8 @@ module.exports.getProducts = (req, res) => {
         res.render('admin/shop/list-product', {
             pageTitle: 'Products List',
             products,
-            isAuth: req.session.isLoggedIn
+            isAuth: req.session.isLoggedIn,
+            isAdmin: req.session.isAdmin || false
         })
     })
 }
@@ -86,7 +88,8 @@ module.exports.getPosts = (req, res) => {
             res.render('admin/blog/list-post', {
                 pageTitle: "Posts",
                 posts: posts,
-                isAuth: req.session.isLoggedIn
+                isAuth: req.session.isLoggedIn,
+                isAdmin: req.session.isAdmin || false
             })
         })
         .catch(err => {
@@ -97,7 +100,8 @@ module.exports.getPosts = (req, res) => {
 module.exports.addPostPage = (req, res) => {
     res.render('admin/blog/add-post', {
         pageTitle: 'Add product',
-        isAuth: req.session.isLoggedIn
+        isAuth: req.session.isLoggedIn,
+        isAdmin: req.session.isAdmin || false
     })
 }
 

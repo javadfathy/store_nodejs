@@ -2,9 +2,17 @@ const User = require('../models/user')
 const bcrypt = require('bcryptjs')
 
 module.exports.getLogin = (req, res) => {
+    let message = req.flash('error')
+    if (message.length > 0) {
+        message = message[0]
+    } else {
+        message = null
+    }
     res.render('front/auth/index', {
         pageTitle: "Login and Register",
-        isAuth: false
+        isAuth: false,
+        isAdmin: req.session.isAdmin || false,
+        errorMessage: message
     })
 }
 
@@ -15,6 +23,7 @@ module.exports.postLogin = (req, res) => {
     User.findOne({ username: username })
         .then(user => {
             if (!user) {
+                req.flash('error', 'email or password is not currect!')
                 return res.redirect('/login')
             }
             bcrypt.compare(password, user.password)
@@ -22,19 +31,25 @@ module.exports.postLogin = (req, res) => {
                     if(result) {
                         req.session.isLoggedIn = true
                         req.session.user = user
+                        if (req.user.roll === 'admin') {
+                            req.session.isAdmin = true
+                        }
                         return req.session.save(err => {
                             console.error('save 25', err)
                             res.redirect('/')
                         })
                     }
+                    req.flash('error', 'email or password is not currect!')
                     res.redirect('/login')
                 })
                 .catch(err => {
+                    req.flash('error', 'email or password is not currect!')
                     console.error('catch 30', err)
                     res.redirect('/login')
                 })
         })
         .catch(err => {
+            req.flash('error', 'email or password is not currect!')
             console.error('catch 35', err)
         })
 }
@@ -45,10 +60,12 @@ module.exports.postRegister = (req, res) => {
         confPassword = req.body.repeat-password
         email = req.body.email
         mobile = req.body.mobile
+        roll = 'user'
 
     User.findOne({email: email})
         .then(userDoc => {
             if (userDoc) {
+                req.flash('error', 'user has in website, please login!')
                 return res.redirect('/login')
             }
             return bcrypt.hash(password, 12)
@@ -60,12 +77,14 @@ module.exports.postRegister = (req, res) => {
                 email: email,
                 mobile: mobile,
                 password: hashedPassword,
+                roll: roll,
                 cart: { items: [] }
             })
             return user.save()
             }
         })
         .then(result => {
+            req.flash('error', 'user has in website, please login!')
             res.redirect('/login')
         })
         .catch(err => {

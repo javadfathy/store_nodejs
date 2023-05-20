@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session)
+const flash = require('connect-flash')
 // REQURE PROJECT
 const shopRoute = require('./routes/shop')
 const blogRoute = require('./routes/blog')
@@ -36,7 +37,7 @@ app.use(
         store: store
     })
 )
-
+app.use(flash())
 app.use((req,res,next) => {
     if (!req.session.user) {
         return next()
@@ -58,7 +59,6 @@ app.use('/admin',adminRoutes)
 app.use(shopRoute)
 app.use(blogRoute)
 app.use(authRoutes)
-
 
 
 

@@ -3,26 +3,27 @@ const express = require('express')
 
 const adminControllers = require('../controllers/admin')
 const isAuth = require('../middleware/is-auth')
+const isAdmin = require('../middleware/is-admin')
 
 const router = express.Router()
 
 
 
-router.get('/dashboard', adminControllers.dashboard)
+router.get('/dashboard',isAuth, isAdmin, adminControllers.dashboard)
 
 // product
-router.get('/list-product', isAuth, adminControllers.getProducts)
-router.get('/add-product', isAuth, adminControllers.addProductPage)
+router.get('/list-product', isAuth, isAdmin, adminControllers.getProducts)
+router.get('/add-product', isAuth, isAdmin, adminControllers.addProductPage)
 
-router.post('/add-product', isAuth, adminControllers.addProduct)
+router.post('/add-product', isAuth, isAdmin, adminControllers.addProduct)
 
-router.post('/delete-product', isAuth, adminControllers.deleteProduct)
+router.post('/delete-product', isAuth, isAdmin, adminControllers.deleteProduct)
 
 // blog
-router.get('/list-post', isAuth, adminControllers.getPosts)
+router.get('/list-post', isAuth, isAdmin, adminControllers.getPosts)
 
-router.get('/add-post', isAuth, adminControllers.addPostPage)
+router.get('/add-post', isAuth, isAdmin, adminControllers.addPostPage)
 
-router.post('/add-post', isAuth, adminControllers.addPost)
+router.post('/add-post', isAuth, isAdmin, adminControllers.addPost)
 
 module.exports = router

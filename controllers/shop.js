@@ -6,7 +6,8 @@ module.exports.getProducts = (req, res) => {
             res.render('front/shop/products', {
                 products,
                 pageTitle: 'محصولات',
-                isAuth: req.session.isLoggedIn
+                isAuth: req.session.isLoggedIn,
+                isAdmin: req.session.isAdmin || false
             })
         })
         .catch(err => {
@@ -22,7 +23,8 @@ module.exports.getProduct = (req, res) => {
             res.render('front/shop/product', {
                 product,
                 pageTitle: 'product.title',
-                isAuth: req.session.isLoggedIn
+                isAuth: req.session.isLoggedIn,
+                isAdmin: req.session.isAdmin || false
             })
         })
         .catch(err => {
@@ -37,7 +39,8 @@ module.exports.getCart = (req, res) => {
             res.render('front/shop/cart', {
                 pageTitle: "Cart Page",
                 products: products,
-                isAuth: req.session.isLoggedIn
+                isAuth: req.session.isLoggedIn,
+                isAdmin: req.session.isAdmin || false
             })
         })
         .catch(err => {

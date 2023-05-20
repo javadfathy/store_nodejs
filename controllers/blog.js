@@ -6,7 +6,8 @@ module.exports.getBlogs = (req, res) => {
         res.render('front/blog/blog', {
             pageTitle: 'Blog',
             posts,
-            isAuth: req.session.isLoggedIn || false
+            isAuth: req.session.isLoggedIn || false,
+            isAdmin: req.session.isAdmin || false
         })
     })
     .catch(err => {
@@ -21,7 +22,8 @@ module.exports.getBlog = (req, res) => {
             res.render('front/blog/single', {
                 pageTitle: post.title,
                 post,
-                isAuth: req.session.isLoggedIn || false
+                isAuth: req.session.isLoggedIn || false,
+                isAdmin: req.session.isAdmin || false
             })
         })
         .catch(err => {

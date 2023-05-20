@@ -6,6 +6,7 @@ const userSchema = new Schema({
     email: String,
     mobile: String,
     password: String,
+    roll: String,
     cart: {
         items: [
             {
