@@ -1,5 +1,6 @@
 const User = require('../models/user')
 const bcrypt = require('bcryptjs')
+const { validationResult } = require('express-validator')
 
 module.exports.getLogin = (req, res) => {
     let message = req.flash('error')
@@ -12,7 +13,14 @@ module.exports.getLogin = (req, res) => {
         pageTitle: "Login and Register",
         isAuth: false,
         isAdmin: req.session.isAdmin || false,
-        errorMessage: message
+        errorMessage: message,
+        inputData: {
+            username: '',
+            password: null,
+            confPassword: null,
+            email: '',
+            mobile: '',
+        }
     })
 }
 
@@ -64,7 +72,23 @@ module.exports.postRegister = (req, res) => {
         email = req.body.email
         mobile = req.body.mobile
         roll = 'user'
-
+        errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            console.log(errors.array())
+            return res.status(422).render('front/auth/index', {
+                pageTitle: "Login and Register",
+                isAuth: false,
+                isAdmin: req.session.isAdmin || false,
+                errorMessage: errors.array()[0].msg,
+                inputData: {
+                    username: username,
+                    password: password,
+                    confPassword: confPassword,
+                    email: email,
+                    mobile: mobile,
+                }
+            })
+        }
     User.findOne({email: email})
         .then(userDoc => {
             if (userDoc) {
@@ -98,6 +122,6 @@ module.exports.postRegister = (req, res) => {
 module.exports.postLogout = (req, res) => {
     req.session.destroy(err => {
         console.error(err)
-        res.redirect('/')
+        res.redirect('/login')
     })
 }
