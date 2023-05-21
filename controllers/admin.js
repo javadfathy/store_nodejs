@@ -17,7 +17,7 @@ module.exports.dashboard = (req, res) => {
 }
 
 module.exports.getProducts = (req, res) => {
-    Product.find()
+    Product.find({ userId: req.user._id })
         .then(products => {
         res.render('admin/shop/list-product', {
             pageTitle: 'Products List',
@@ -31,7 +31,8 @@ module.exports.getProducts = (req, res) => {
 module.exports.addProductPage = (req, res) => {
     res.render('admin/shop/add-product', {
         pageTitle: 'Add product',
-        isAuth: req.session.isLoggedIn
+        isAuth: req.session.isLoggedIn,
+        isAdmin: req.session.isAdmin || false
     })
 }
 
@@ -71,7 +72,7 @@ module.exports.addProduct = (req, res) => {
 module.exports.deleteProduct = (req, res) => {
     const pID = req.body.productId
 
-    Product.findByIdAndRemove(pID)
+    Product.deleteOne({ _id: pID, userId: req.user._id})
         .then(result => {
             console.log('product Deleted!');
             res.redirect('/admin/list-product')

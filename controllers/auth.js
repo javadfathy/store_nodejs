@@ -31,19 +31,22 @@ module.exports.postLogin = (req, res) => {
                     if(result) {
                         req.session.isLoggedIn = true
                         req.session.user = user
-                        if (req.user.roll === 'admin') {
+                        console.log(req.session.user.roll)
+                        if (req.session.user.roll === 'admin') {
                             req.session.isAdmin = true
                         }
                         return req.session.save(err => {
                             console.error('save 25', err)
                             res.redirect('/')
                         })
+                    } else {
+                        req.flash('error', 'email or password is not currect!')
+                        res.redirect('/login')
                     }
-                    req.flash('error', 'email or password is not currect!')
-                    res.redirect('/login')
+                    
                 })
                 .catch(err => {
-                    req.flash('error', 'email or password is not currect!')
+                    req.flash('error', 'Server error')
                     console.error('catch 30', err)
                     res.redirect('/login')
                 })
