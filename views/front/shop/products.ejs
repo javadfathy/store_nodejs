@@ -5,7 +5,7 @@
     <% for (product of products) { %>
         <div class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
             <a href="/shop/product/<%= product._id %>">
-                <!-- <img class="p-8 rounded-t-lg" src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" alt="product image" /> -->
+                <img class="p-8 rounded-t-lg object-cover w-full h-72" src="/<%= product.thumbnail %>" alt="<%= product.title %>" />
             </a>
             <div class="px-5 pb-5">
                 <a href="/shop/product/<%= product._id %>">

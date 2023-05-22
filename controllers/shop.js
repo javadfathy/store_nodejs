@@ -36,6 +36,7 @@ module.exports.getCart = (req, res) => {
     req.user.populate('cart.items.productId')
         .then(user => {
             const products = user.cart.items
+            console.log(user.cart)
             res.render('front/shop/cart', {
                 pageTitle: "Cart Page",
                 products: products,

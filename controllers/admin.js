@@ -41,12 +41,13 @@ module.exports.addProduct = (req, res) => {
     const title = req.body.title
     description = req.body.description
     price = req.body.price
-    thumbnail = req.body.thumbnail
+    thumbnail = req.file.path
     brand = req.body.brand
     category = req.body.category
     comments = req.body.comments
     attribute = req.body.attribute
     user = req.user
+    console.log('thumb', thumbnail)
     const product = new Product({
         title: title,
         description: description,

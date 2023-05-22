@@ -6,6 +6,7 @@ const mongoose = require('mongoose')
 const session = require('express-session')
 const MongoDBStore = require('connect-mongodb-session')(session)
 const flash = require('connect-flash')
+const multer = require('multer')
 // REQURE PROJECT
 const shopRoute = require('./routes/shop')
 const blogRoute = require('./routes/blog')
@@ -25,10 +26,30 @@ const store = new MongoDBStore({
 app.set('view engine', 'ejs')
 app.set('views','views')
 
+// Custom Function
+const fileStorage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'product-thumbnail')
+    },
+    filename: (req, file, cb) => {
+        cb(null, new Date().toDateString() + "-" + file.originalname)
+    }
+})
+
+const fileFilterFormat = (req, file, cb) => {
+    if( file.mimetype === 'image/png' || file.mimetype === 'image/jpeg' ) {
+        cb(null, true)
+    } else {
+        cb(null, false)
+    }
+}
+
 // APP USE
 app.use(bodyParser.urlencoded({extended: false}))
+app.use(multer({ storage: fileStorage, fileFilter: fileFilterFormat }).single('thumbnail'))
 
 app.use(express.static(path.join(__dirname,'public')))
+app.use('/product-thumbnail', express.static(path.join(__dirname,'product-thumbnail')))
 app.use(
     session({
         secret: 'secret key',
