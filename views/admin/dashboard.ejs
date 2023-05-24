@@ -1,7 +1,10 @@
 <%- include('../includes/header.ejs') %>
-<%- include('./include/sidebar.ejs') %>
-<section class="flex">
+<div class="flex flex-row"> 
+    <%- include('./include/sidebar.ejs') %>
+    <section class="flex-1 pl-4 pt-4 container pr-4">
+        <%- include('../includes/breadcrumb.ejs', {breads: ['dashboard']}) %>
 
-</section>
+    </section>
+</div>
 
-<%- include('../includes/footer.ejs') %>
+<%- include('./include/footer.ejs') %>
