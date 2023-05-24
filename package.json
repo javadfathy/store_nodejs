@@ -4,6 +4,8 @@
   "description": "this store created by nodejs for RS",
   "main": "app.js",
   "scripts": {
+    "build-css": "tailwindcss build -i ./tailwind.css -o ./public/css/style.css --watch",
+    "start": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,8 +32,10 @@
     "multer": "^1.4.5-lts.1",
     "passport": "^0.6.0",
     "passport-local": "^1.0.0",
+    "postcss-preset-env": "^8.4.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "style-loader": "^3.3.3"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.14",
