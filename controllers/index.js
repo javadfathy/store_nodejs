@@ -1,8 +1,15 @@
+const Product = require('../models/single-product')
 
 module.exports.getHome = (req, res) => {
-    res.render('front/index', {
-        pageTitle: 'Home',
-        isAuth: req.session.isLoggedIn || false,
-        isAdmin: req.session.isAdmin || false
-    })
+    Product.find()
+        .then(products => {
+            res.render('front/index', {
+                pageTitle: 'Home',
+                products: products,
+                isAuth: req.session.isLoggedIn || false,
+                isAdmin: req.session.isAdmin || false
+            })
+        }).catch(err => {
+            console.error(err)
+        })
 }

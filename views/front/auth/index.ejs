@@ -1,21 +1,22 @@
 <%- include('../../includes/header.ejs') %>
-<%- include('../../includes/breadcrumb.ejs', {breads: ['Login / Register']}) %>
+<section class="max-w-screen-xl mx-auto container">
+    <%- include('../../includes/breadcrumb.ejs', {breads: ['Login / Register']}) %>
 
-<% if (errorMessage) { %>
-    <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-        <%= errorMessage %>
-      </div>
-<% } %>
+    <% if (errorMessage) { %>
+        <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+            <%= errorMessage %>
+        </div>
+    <% } %>
 
-<div class="grid grid-cols-2 gap-6">
-    <div class="bg-gray-100 rounded-lg p-6">
-        <%- include('./login.ejs') %>
+    <div class="grid grid-cols-2 gap-6">
+        <div class="bg-gray-100 rounded-lg p-6">
+            <%- include('./login.ejs') %>
+        </div>
+        <div class="bg-gray-100 rounded-lg p-6">
+            <%- include('./register.ejs', { data: inputData }) %>
+        </div>
     </div>
-    <div class="bg-gray-100 rounded-lg p-6">
-        <%- include('./register.ejs', { data: inputData }) %>
-    </div>
-</div>
 
-
+</section>
 
 <%- include('../../includes/footer.ejs') %>
