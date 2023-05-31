@@ -17,6 +17,9 @@ router.get('/add-product', isAuth, isAdmin, adminControllers.addProductPage)
 
 router.post('/add-product', isAuth, isAdmin, adminControllers.addProduct)
 
+router.get('/edit-product/:id', isAuth, isAdmin, adminControllers.editProductPage)
+router.post('/edit-product/:id', isAuth, isAdmin, adminControllers.editProduct)
+
 router.post('/delete-product', isAuth, isAdmin, adminControllers.deleteProduct)
 
 // blog

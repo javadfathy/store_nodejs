@@ -1,0 +1,53 @@
+<%- include('../../includes/header.ejs') %>  
+<div class="flex flex-row"> 
+<%- include('../include/sidebar.ejs') %>
+<section class="flex-1 pl-4 pt-4 container pr-4">
+    <%- include('../../includes/breadcrumb.ejs', {breads: ['dashboard','edit product']}) %>
+    <section class=" container mx-auto">
+        <form method="POST" action="#" enctype="multipart/form-data">
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title:</label>
+                    <input type="text" value="<%= product.title %>" id="title" name="title" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price:</label>
+                    <input type="text" value="<%= product.price %>" id="price" name="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description:</label>
+                <textarea id="description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="write description..."><%= product.description %></textarea>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="brand" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Brand:</label>
+                    <input type="text" value="<%= product.brand %>" id="brand" name="brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Category:</label>
+                    <input type="text" value="<%= product.category %>" id="category" name="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="attribute" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Attribute:</label>
+                    <input type="text" value="<%= product.attribute %>" id="attribute" name="attribute" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="thumbnail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Thumbnail:</label>
+                    <input type="file" value="<%= product.thumbnail %>" id="thumbnail" name="thumbnail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+            </div>
+            <div>
+                <div class="flex items-center mb-4">
+                    <input name="comment" id="comment" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" >
+                    <label for="comment" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">allow to send comment</label>
+                </div>
+            </div>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">ADD</button>
+        </form>
+    </section>
+</section>
+</div> 
+<%- include('../include/footer.ejs') %>

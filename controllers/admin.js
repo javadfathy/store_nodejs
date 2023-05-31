@@ -69,6 +69,44 @@ module.exports.addProduct = (req, res) => {
         })
 }
 
+module.exports.editProductPage = (req, res) => {
+    const pID = req.params.id
+    
+    Product.findById(pID).then(product => {
+        res.render('admin/shop/edit-product', {
+            pageTitle: 'Edit product',
+            product: product,
+            isAuth: req.session.isLoggedIn,
+            isAdmin: req.session.isAdmin || false
+        })
+    })
+}
+
+module.exports.editProduct = (req, res) => {
+    console.log(req.params.id)
+    const pID = req.params.id
+    // const thumbnail = req.file.path
+    const productUpdated = {
+        title: req.body.title,
+        description: req.body.description,
+        price: req.body.price,
+        brand: req.body.brand,
+        category: req.body.category,
+        comments: req.body.comments,
+        attribute: req.body.attribute,
+    }
+    if (req.file) {
+        productUpdated.thumbnail = req.file.path
+    }
+    Product.findOneAndUpdate({ _id: pID }, { ...productUpdated })
+        .then(result => {
+            console.log('product Updated!');
+            res.redirect(`/admin/edit-product/${pID}`)
+        }).catch(err => {
+            console.error(err);
+        })
+}
+
 
 module.exports.deleteProduct = (req, res) => {
     const pID = req.body.productId
