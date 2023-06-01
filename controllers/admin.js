@@ -37,28 +37,21 @@ module.exports.addProductPage = (req, res) => {
 }
 
 module.exports.addProduct = (req, res) => {
-    // products.push({title: req.body.title})
-    const title = req.body.title
-    description = req.body.description
-    price = req.body.price
-    thumbnail = req.file.path
-    brand = req.body.brand
-    category = req.body.category
-    comments = req.body.comments
-    attribute = req.body.attribute
-    user = req.user
-    console.log('thumb', thumbnail)
-    const product = new Product({
-        title: title,
-        description: description,
-        price: price,
-        thumbnail: thumbnail,
-        brand: brand,
-        category: category,
-        comments: comments,
-        attribute: attribute,
-        userId: user
-    })
+    const productData = {
+        title: req.body.title,
+        description: req.body.description,
+        price: req.body.price,
+        brand: req.body.brand,
+        category: req.body.category,
+        comments: req.body.comments,
+        attribute: req.body.attribute,
+        spicifics: req.body.spicific,
+        userId: req.user
+    }
+    if (req.file) {
+        productData.thumbnail = req.file.path
+    }
+    const product = new Product(productData)
     product.save()
         .then(result => {
             console.log('product Created!');
@@ -83,9 +76,7 @@ module.exports.editProductPage = (req, res) => {
 }
 
 module.exports.editProduct = (req, res) => {
-    console.log(req.params.id)
     const pID = req.params.id
-    // const thumbnail = req.file.path
     const productUpdated = {
         title: req.body.title,
         description: req.body.description,
@@ -94,6 +85,7 @@ module.exports.editProduct = (req, res) => {
         category: req.body.category,
         comments: req.body.comments,
         attribute: req.body.attribute,
+        spicifics: req.body.spicific,
     }
     if (req.file) {
         productUpdated.thumbnail = req.file.path
