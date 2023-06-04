@@ -11,6 +11,14 @@ const router = express.Router()
 
 router.get('/dashboard',isAuth, isAdmin, adminControllers.dashboard)
 
+// Menu
+router.get('/menus',isAuth, isAdmin, adminControllers.MenuPage)
+router.get('/add-menu',isAuth, isAdmin, adminControllers.addMenuPage)
+router.post('/add-menu',isAuth, isAdmin, adminControllers.addMenu)
+router.get('/edit-menu/:id',isAuth, isAdmin, adminControllers.editMenuPage)
+router.post('/edit-menu/:id',isAuth, isAdmin, adminControllers.editMenu)
+router.post('/delete-menu',isAuth, isAdmin, adminControllers.deleteMenu)
+
 // product
 router.get('/list-product', isAuth, isAdmin, adminControllers.getProducts)
 router.get('/add-product', isAuth, isAdmin, adminControllers.addProductPage)
