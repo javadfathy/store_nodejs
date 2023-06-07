@@ -11,6 +11,12 @@ const router = express.Router()
 
 router.get('/dashboard',isAuth, isAdmin, adminControllers.dashboard)
 
+// Home
+router.get('/home',isAuth, isAdmin, adminControllers.HomePage)
+
+// User
+router.get('/users',isAuth, isAdmin, adminControllers.UserPage)
+
 // Menu
 router.get('/menus',isAuth, isAdmin, adminControllers.MenuPage)
 router.get('/add-menu',isAuth, isAdmin, adminControllers.addMenuPage)

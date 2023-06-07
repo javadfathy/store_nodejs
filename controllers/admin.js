@@ -17,6 +17,23 @@ module.exports.dashboard = (req, res) => {
     
 }
 
+// Home
+module.exports.HomePage = (req, res) => {
+    res.render('admin/home/index', {
+        pageTitle: 'Home',
+        isAuth: req.session.isLoggedIn,
+        isAdmin: req.session.isAdmin || false
+    })
+}
+
+// User
+module.exports.UserPage = (req, res) => {
+    res.render('admin/user/list-user', {
+        pageTitle: 'Users',
+        isAuth: req.session.isLoggedIn,
+        isAdmin: req.session.isAdmin || false
+    })
+}
 
 // Menu
 module.exports.MenuPage = (req, res) => {
