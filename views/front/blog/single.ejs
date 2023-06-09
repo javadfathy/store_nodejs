@@ -1,12 +1,13 @@
-<%- include('../../includes/header.ejs',{data: headerMenu})) %>
+<%- include('../../includes/header.ejs',{data: headerMenu}) %>
+<section class="max-w-screen-xl mx-auto container">
 <%- include('../../includes/breadcrumb.ejs', {breads: ['Blog', post.title]}) %>
-
-<section>
-    <h3 class="text-5xl"><%= post.title %></h3>
-    <hr>
-    <p>
-        <%= post.content %>
-    </p>
+    <div class="">
+        <h3 class="text-5xl"><%= post.title %></h3>
+        <hr>
+        <p class="bg-white rounded-lg p-4 mt-4">
+            <%= post.content %>
+        </p>
+    </div>
 </section>
 
 

@@ -5,6 +5,7 @@
     <%- include('../../includes/breadcrumb.ejs', {breads: ['dashboard','edit product']}) %>
     <section class=" container mx-auto">
         <form method="POST" action="#" enctype="multipart/form-data">
+            <h3 class="text-2xl border-b-black border-b-2 mb-8">Base Info</h3>
             <div class="grid md:grid-cols-2 md:gap-6">
                 <div class="relative z-0 w-full mb-6 group">
                     <label for="title" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Title:</label>
@@ -44,6 +45,11 @@
                     <input name="comment" id="comment" type="checkbox" value="" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" >
                     <label for="comment" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">allow to send comment</label>
                 </div>
+            </div>
+            <h3 class="text-2xl border-b-black border-b-2 my-8">Content</h3>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="content" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description:</label>
+                <textarea id="content" name="content" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="write description..."><%= product.content  %></textarea>
             </div>
             <h3 class="text-2xl border-b-black border-b-2 my-8">Spicification</h3>
             <div class="flex">

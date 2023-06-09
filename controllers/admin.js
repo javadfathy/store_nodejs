@@ -149,6 +149,7 @@ module.exports.addProduct = (req, res) => {
         category: req.body.category,
         comments: req.body.comments,
         attribute: req.body.attribute,
+        content: req.body.content,
         spicifics: req.body.spicific,
         userId: req.user
     }
@@ -189,6 +190,7 @@ module.exports.editProduct = (req, res) => {
         category: req.body.category,
         comments: req.body.comments,
         attribute: req.body.attribute,
+        content: req.body.content,
         spicifics: req.body.spicific,
     }
     if (req.file) {

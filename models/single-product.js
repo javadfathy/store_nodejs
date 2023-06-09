@@ -11,6 +11,7 @@ const productSchema = new Schema({
     comments: Boolean,
     attribute: String,
     spicifics: Array,
+    content: String,
     userId: {
         type: Schema.Types.ObjectId,
         ref: 'User',

@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const Menu = require('../models/single-menu')
 const bcrypt = require('bcryptjs')
 const { validationResult } = require('express-validator')
 
@@ -9,18 +10,23 @@ module.exports.getLogin = (req, res) => {
     } else {
         message = null
     }
-    res.render('front/auth/index', {
-        pageTitle: "Login and Register",
-        isAuth: false,
-        isAdmin: req.session.isAdmin || false,
-        errorMessage: message,
-        inputData: {
-            username: '',
-            password: null,
-            confPassword: null,
-            email: '',
-            mobile: '',
-        }
+    Menu.findOne({location: 'header'}).then(headerMenu => {
+        res.render('front/auth/index', {
+            pageTitle: "Login and Register",
+            isAuth: false,
+            isAdmin: req.session.isAdmin || false,
+            headerMenu: headerMenu,
+            errorMessage: message,
+            inputData: {
+                username: '',
+                password: null,
+                confPassword: null,
+                email: '',
+                mobile: '',
+            }
+        })
+    }).catch(err => {
+        console.error(err)
     })
 }
 
