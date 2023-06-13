@@ -2,13 +2,14 @@ const path = require('path')
 const express = require('express')
 
 const adminControllers = require('../controllers/admin')
+// const userControllers = require('../controllers/admin/user')
 const isAuth = require('../middleware/is-auth')
 const isAdmin = require('../middleware/is-admin')
 
 const router = express.Router()
 
 
-
+// Dashbord
 router.get('/dashboard',isAuth, isAdmin, adminControllers.dashboard)
 
 // Home
@@ -16,6 +17,11 @@ router.get('/home',isAuth, isAdmin, adminControllers.HomePage)
 
 // User
 router.get('/users',isAuth, isAdmin, adminControllers.UserPage)
+router.get('/add-user',isAuth, isAdmin, adminControllers.addUserPage)
+router.post('/add-user',isAuth, isAdmin, adminControllers.addUser)
+router.get('/edit-user/:id',isAuth, isAdmin, adminControllers.editUserPage)
+router.post('/edit-user/:id',isAuth, isAdmin, adminControllers.editUser)
+router.post('/delete-user',isAuth, isAdmin, adminControllers.deleteUser)
 
 // Menu
 router.get('/menus',isAuth, isAdmin, adminControllers.MenuPage)
