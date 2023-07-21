@@ -27,10 +27,14 @@ module.exports.addUser = (req, res) => {
     const dataUser = {
         username: req.body.username,
         email: req.body.email,
+        biography: req.body.biography,
         mobile: req.body.mobile,
         password: req.body.password,
         roll: req.body.roll,
         cart: {items: []}
+    }
+    if (req.file) {
+        dataUser.avatar = req.file.path
     }
     const user = new User(dataUser)
     user.save()
@@ -61,13 +65,17 @@ module.exports.editUser = (req, res) => {
     const userUpdateData = {
         username: req.body.username,
         email: req.body.email,
+        biography: req.body.biography,
         mobile: req.body.mobile,
         password: req.body.password,
         roll: req.body.roll,
     }
+    if (req.file) {
+        userUpdateData.avatar = req.file.path
+    }
     User.findOneAndUpdate({_id: uID}, userUpdateData)
         .then(result => {
-            res.redirect(`admin/user/edit-user/${uID}`)
+            res.redirect(`/admin/edit-user/${uID}`)
         }).catch(err => {
             console.error(err)
         })
@@ -78,7 +86,7 @@ module.exports.deleteUser = (req, res) => {
     
     User.deleteOne({_id: uID})
         .then(result => {
-            res.redirect('admin/user/list-user')
+            res.redirect('/admin/users')
         }).catch(err => {
             console.error(err)
         })

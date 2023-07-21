@@ -4,9 +4,11 @@ const Schema = mongoose.Schema
 const userSchema = new Schema({
     username: String,
     email: String,
+    biography: String,
     mobile: String,
     password: String,
     roll: String,
+    avatar: String,
     cart: {
         items: [
             {

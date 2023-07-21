@@ -13,12 +13,12 @@
             </div>
         
     </section>
-    <section class="bg-gray-500 mt-10 overflow-hidden">
+    <section class="bg-gray-500 mt-10">
         <h3 class="text-3xl text-white text-center py-3 border-b-2">Popular Products</h3>
-        <div class="max-w-screen-xl mx-auto py-8 grid grid-cols-4 overflow-x-auto gap-6">
+        <div id="my-keen-slider" class="keen-slider container mx-auto mt-4 pb-8">
             <% if(products){ 
                  for(product of products) { %>
-            <div class="max bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+            <div class="keen-slider__slide bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
                 <a href="/shop/product/<%= product._id %>">
                     <img class="p-8 rounded-t-lg object-cover w-full h-56" src="/<%= product.thumbnail %>" alt="product image" />
                 </a>
@@ -68,4 +68,15 @@
             <% } %>
         </div>
     </section>
+
+    <script>
+    var slider = new KeenSlider("#my-keen-slider", {
+        loop: true,
+        mode: "free-snap",
+        slides: {
+        perView: 4,
+        spacing: 15,
+        },
+    })
+    </script>
 <%- include('../includes/footer.ejs') %>

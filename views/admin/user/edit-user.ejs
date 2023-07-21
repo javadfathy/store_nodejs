@@ -1,0 +1,53 @@
+<%- include('../include/header.ejs') %>  
+<div class="flex flex-row"> 
+<%- include('../include/sidebar.ejs') %>
+<script>
+    
+</script>
+<section class="flex-1 pl-4 pt-4 container pr-4">
+    <%- include('../../includes/breadcrumb.ejs', {breads: ['dashboard','users','edit user',user.username]}) %>
+    <section class=" container mx-auto">
+        <form method="POST" action="#" enctype="multipart/form-data">
+            <h3 class="text-2xl border-b-black border-b-2 mb-8">Base Info</h3>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username:</label>
+                    <input type="text" id="username" value="<%= user.username %>" name="username" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email:</label>
+                    <input type="email" id="email" value="<%= user.email %>" name="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+            </div>
+            <div class="relative z-0 w-full mb-6 group">
+                <label for="biography" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Biography:</label>
+                <textarea id="biography" name="biography" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="write description..."><%= user.biography %></textarea>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="mobile" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mobile:</label>
+                    <input type="text" id="mobile" value="<%= user.mobile %>" name="mobile" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="roll" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Roll:</label>
+                    <select id="roll" value="<%= user.roll %>" name="roll" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                        <option value="customer" <%= user.roll === 'customer' ? 'selected' : '' %>>customer</option>
+                        <option value="admin" <%= user.roll === 'admin' ? 'selected' : '' %>>admin</option>
+                        <option value="manager" <%= user.roll === 'manager' ? 'selected' : '' %>>manager</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid md:grid-cols-2 md:gap-6">
+                
+                <div class="relative z-0 w-full mb-6 group">
+                    <label for="thumbnail" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Avatar:</label>
+                    <input type="file" id="thumbnail" name="thumbnail" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
+            </div>
+            <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">ADD</button>
+        </form>
+    </section>
+</section>
+</div> 
+
+<%- include('../include/footer.ejs') %>

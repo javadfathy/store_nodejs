@@ -2,7 +2,7 @@
 <div class="flex flex-row"> 
     <%- include('../include/sidebar.ejs') %>
     <section class="flex-1 pl-4 pt-4 container pr-4">
-        <%- include('../../includes/breadcrumb.ejs', {breads: ['dashboard','users']}) %>
+        <%- include('../../includes/breadcrumb.ejs', {breads: ['dashboard','users'],action: '/admin/add-user'}) %>
         <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
             <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -41,7 +41,8 @@
                                 <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                             </div>
                         </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        <th scope="row" class="px-6 py-4 flex font-medium items-center text-gray-900 whitespace-nowrap dark:text-white">
+                            <img class="w-14 object-cover h-16 mr-2 rounded-full" src="/<%= user.avatar %>" />
                             <%= user.username %>
                         </th>
                         <td class="px-6 py-4">
