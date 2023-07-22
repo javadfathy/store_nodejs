@@ -49,4 +49,11 @@ router.get('/add-post', isAuth, isAdmin, adminControllers.addPostPage)
 
 router.post('/add-post', isAuth, isAdmin, adminControllers.addPost)
 
+// contact us
+router.get('/contact-us', isAuth, isAdmin, adminControllers.contactUs)
+
+// about us
+router.get('/about-us', isAuth, isAdmin, adminControllers.aboutUs)
+
+
 module.exports = router
