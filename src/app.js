@@ -24,7 +24,7 @@ const store = new MongoDBStore({
 
 // APP SET
 app.set('view engine', 'ejs')
-app.set('views','views')
+app.set('views','src/views')
 
 // Custom Function
 const fileStorage = multer.diskStorage({

@@ -2,7 +2,7 @@
   "name": "store_with_node",
   "version": "1.0.0",
   "description": "this store created by nodejs for RS",
-  "main": "app.js",
+  "main": "src/app.js",
   "scripts": {
     "build-css": "tailwindcss build -i ./tailwind.css -o ./public/css/style.css --watch",
     "start": "nodemon app.js",
