@@ -51,6 +51,8 @@ router.post('/add-post', isAuth, isAdmin, adminControllers.addPost)
 
 // contact us
 router.get('/contact-us', isAuth, isAdmin, adminControllers.contactUs)
+router.post('/delete-contact', isAuth, isAdmin, adminControllers.deleteContact)
+router.get('/view-contact/:id', isAuth, isAdmin, adminControllers.viewContact)
 
 // about us
 router.get('/about-us', isAuth, isAdmin, adminControllers.aboutUs)

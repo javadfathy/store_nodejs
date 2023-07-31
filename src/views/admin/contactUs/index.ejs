@@ -14,29 +14,26 @@
                             </div>
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Title
+                            name
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Link
+                            email
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Icon
+                            subject
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Type
+                            phone
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Location
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
+                            action
                         </th>
                     </tr>
                 </thead>
-                    <% if (menus.length > 0) { %>
+                    <% if (contacts.length > 0) { %>
                 <tbody>
                     
-                        <% for (menu of menus) { %>
+                        <% for (contact of contacts) { %>
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="w-4 p-4">
                             <div class="flex items-center">
@@ -45,25 +42,22 @@
                             </div>
                         </td>
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <%= menu.title %>
+                            <%= contact.name %>
                         </th>
                         <td class="px-6 py-4">
-                            <%= menu.link %>
+                            <%= contact.email %>
                         </td>
                         <td class="px-6 py-4">
-                            <img class="w-24 object-cover h-20" src="/<%= menu.icon %>" alt="">
+                            <%= contact.subject %>
                         </td>
                         <td class="px-6 py-4">
-                            <%= menu.type %>
-                        </td>
-                        <td class="px-6 py-4">
-                            <%= menu.location %>
+                            <%= contact.phone %>
                         </td>
                         <td class="px-6 py-4 space-x-3">
-                            <a href="/admin/edit-menu/<%= menu._id %>" class="inline-block font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            <form action="/admin/delete-menu" class="inline-block" method="POST">
+                            <a href="/admin/view-contact/<%= contact._id %>" class="inline-block font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                            <form action="/admin/delete-contact" class="inline-block" method="POST">
                                 <button class="font-medium text-red-600 dark:text-red-500 hover:underline">Remove</button>
-                                <input type="hidden" value="<%= menu._id %>" name="menuId"/>
+                                <input type="hidden" value="<%= contact._id %>" name="cotactId"/>
                             </form>
                         </td>
                     </tr>
@@ -71,7 +65,7 @@
                 </tbody>
                 <% } else { %>
                     <div class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-                        <span class="font-medium">Not Found any Menu
+                        <span class="font-medium">Not Found any Contact
                       </div>
                 <% } %>
             </table>
